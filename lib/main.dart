@@ -7,63 +7,53 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'logic/cubit/counter_cubit.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-
-}
-
-class _MyAppState extends State<MyApp> {
- // final CounterCubit _counterCubit = CounterCubit();
+  // final CounterCubit _counterCubit = CounterCubit();
   final AppRouter _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CounterCubit>(
-      create: (context) => CounterCubit(),
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        onGenerateRoute: _appRouter.onGenerateRoute,
-        /// this has been created in the app_router class
-        // routes:
-        // {
-        //   '/': (context) => BlocProvider.value(
-        //     value: _counterCubit,
-        //     child: (
-        //        HomeScreen( title: 'Home Screen', color: Colors.redAccent,)
-        //     ),
-        //   ),
-        //   '/second-screen': (context) =>
-        //       BlocProvider.value(
-        //         value: _counterCubit,
-        //         child: SecondScreen( title: 'Second Screen',  color: Colors.lightBlueAccent,),
-        //       ),
-        //   '/third-screen': (context) =>
-        //       BlocProvider.value(
-        //         value: _counterCubit,
-        //         child: ThirdScreen( title: 'Third Screen', color: Colors.grey,),
-        //       ),
-        // },
-   )
+        create: (context) => CounterCubit(),
+        child: MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          onGenerateRoute: _appRouter.onGenerateRoute,
+
+          /// this has been created in the app_router class
+          // routes:
+          // {
+          //   '/': (context) => BlocProvider.value(
+          //     value: _counterCubit,
+          //     child: (
+          //        HomeScreen( title: 'Home Screen', color: Colors.redAccent,)
+          //     ),
+          //   ),
+          //   '/second-screen': (context) =>
+          //       BlocProvider.value(
+          //         value: _counterCubit,
+          //         child: SecondScreen( title: 'Second Screen',  color: Colors.lightBlueAccent,),
+          //       ),
+          //   '/third-screen': (context) =>
+          //       BlocProvider.value(
+          //         value: _counterCubit,
+          //         child: ThirdScreen( title: 'Third Screen', color: Colors.grey,),
+          //       ),
+          // },
+        )
     );
   }
-  // @override
-  // void dispose() {
-  //   _counterCubit.close();
-  //   super.dispose();
-  // }
+// @override
+// void dispose() {
+//   _counterCubit.close();
+//   super.dispose();
+// }
 
- @override
-  void dispose() {
-    _appRouter.dispose();/**/
-    super.dispose();
-  }
+
 }
